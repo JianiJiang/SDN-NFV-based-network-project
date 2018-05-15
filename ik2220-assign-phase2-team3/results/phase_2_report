@@ -1,0 +1,550 @@
+======================Ping Test=====================
+Case 1: H1 -> H2 :PING 100.0.0.11 (100.0.0.11) 56(84) bytes of data.
+64 bytes from 100.0.0.11: icmp_seq=1 ttl=64 time=26.8 ms
+
+--- 100.0.0.11 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 26.823/26.823/26.823/0.000 ms
+Success
+
+Case 2: H1 -> H3 :PING 100.0.0.50 (100.0.0.50) 56(84) bytes of data.
+From 100.0.0.10 icmp_seq=1 Destination Host Unreachable
+
+--- 100.0.0.50 ping statistics ---
+1 packets transmitted, 0 received, +1 errors, 100% packet loss, time 0ms
+
+Failed
+
+Case 3: H1 -> H4 :PING 100.0.0.51 (100.0.0.51) 56(84) bytes of data.
+From 100.0.0.10 icmp_seq=1 Destination Host Unreachable
+
+--- 100.0.0.51 ping statistics ---
+1 packets transmitted, 0 received, +1 errors, 100% packet loss, time 0ms
+
+Failed
+
+Case 4: H1 -> Load Balancer 1 :PING 100.0.0.25 (100.0.0.25) 56(84) bytes of data.
+64 bytes from 100.0.0.25: icmp_seq=1 ttl=255 time=65.4 ms
+
+--- 100.0.0.25 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 65.430/65.430/65.430/0.000 ms
+Success
+
+H1 -> Load Balancer 2 :PING 100.0.0.45 (100.0.0.45) 56(84) bytes of data.
+64 bytes from 100.0.0.45: icmp_seq=1 ttl=255 time=18.8 ms
+
+--- 100.0.0.45 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 18.812/18.812/18.812/0.000 ms
+Success
+
+Case 6: H1 -> Web Server 1 :PING 100.0.0.40 (100.0.0.40) 56(84) bytes of data.
+From 100.0.0.10 icmp_seq=1 Destination Host Unreachable
+
+--- 100.0.0.40 ping statistics ---
+1 packets transmitted, 0 received, +1 errors, 100% packet loss, time 0ms
+
+Failed
+
+Case 7: H1 -> DNS Server 1 :PING 100.0.0.20 (100.0.0.20) 56(84) bytes of data.
+From 100.0.0.10 icmp_seq=1 Destination Host Unreachable
+
+--- 100.0.0.20 ping statistics ---
+1 packets transmitted, 0 received, +1 errors, 100% packet loss, time 0ms
+
+Failed
+
+Case 8: H3 -> H4 :PING 100.0.0.52 (100.0.0.52) 56(84) bytes of data.
+
+--- 100.0.0.52 ping statistics ---
+1 packets transmitted, 0 received, 100% packet loss, time 0ms
+
+Failed
+
+Case 9: H2 -> H3 :PING 100.0.0.50 (100.0.0.50) 56(84) bytes of data.
+From 100.0.0.11 icmp_seq=1 Destination Host Unreachable
+
+--- 100.0.0.50 ping statistics ---
+1 packets transmitted, 0 received, +1 errors, 100% packet loss, time 0ms
+
+Failed
+
+Case 10: H2 -> H4 :PING 100.0.0.51 (100.0.0.51) 56(84) bytes of data.
+From 100.0.0.11 icmp_seq=1 Destination Host Unreachable
+
+--- 100.0.0.51 ping statistics ---
+1 packets transmitted, 0 received, +1 errors, 100% packet loss, time 0ms
+
+Failed
+
+Case 11: H2 -> Load Balancer 1 :PING 100.0.0.25 (100.0.0.25) 56(84) bytes of data.
+64 bytes from 100.0.0.25: icmp_seq=1 ttl=255 time=57.4 ms
+
+--- 100.0.0.25 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 57.401/57.401/57.401/0.000 ms
+ Success
+
+Case 12: H2 -> Load Balancer 2 :PING 100.0.0.45 (100.0.0.45) 56(84) bytes of data.
+64 bytes from 100.0.0.45: icmp_seq=1 ttl=255 time=17.1 ms
+
+--- 100.0.0.45 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 17.145/17.145/17.145/0.000 ms
+Success
+
+Case 13: H2 -> DNS Server 1 :PING 100.0.0.20 (100.0.0.20) 56(84) bytes of data.
+From 100.0.0.11 icmp_seq=1 Destination Host Unreachable
+
+--- 100.0.0.20 ping statistics ---
+1 packets transmitted, 0 received, +1 errors, 100% packet loss, time 0ms
+
+Failed
+
+Case 14: H2 -> Web Server 1 :PING 100.0.0.40 (100.0.0.40) 56(84) bytes of data.
+From 100.0.0.11 icmp_seq=1 Destination Host Unreachable
+
+--- 100.0.0.40 ping statistics ---
+1 packets transmitted, 0 received, +1 errors, 100% packet loss, time 0ms
+
+Failed
+
+Case 15: H3 -> H1 :PING 100.0.0.10 (100.0.0.10) 56(84) bytes of data.
+64 bytes from 100.0.0.10: icmp_seq=1 ttl=64 time=24.8 ms
+
+--- 100.0.0.10 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 24.803/24.803/24.803/0.000 ms
+Success
+
+Case 16: H3 -> H2 :PING 100.0.0.11 (100.0.0.11) 56(84) bytes of data.
+64 bytes from 100.0.0.11: icmp_seq=1 ttl=64 time=17.6 ms
+
+--- 100.0.0.11 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 17.650/17.650/17.650/0.000 ms
+Success
+
+Case 17: H3 -> Load Balancer 1 :PING 100.0.0.25 (100.0.0.25) 56(84) bytes of data.
+64 bytes from 100.0.0.25: icmp_seq=1 ttl=255 time=15.7 ms
+
+--- 100.0.0.25 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 15.707/15.707/15.707/0.000 ms
+Success
+
+Case 18: H3 -> Load Balancer :PING 100.0.0.45 (100.0.0.45) 56(84) bytes of data.
+64 bytes from 100.0.0.45: icmp_seq=1 ttl=255 time=15.3 ms
+
+--- 100.0.0.45 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 15.303/15.303/15.303/0.000 ms
+Success
+
+Case 19: H3 -> DNS Server 1 :PING 100.0.0.20 (100.0.0.20) 56(84) bytes of data.
+
+--- 100.0.0.20 ping statistics ---
+1 packets transmitted, 0 received, 100% packet loss, time 0ms
+
+ Failed
+
+Case 20: H3 -> Web Server 1 :PING 100.0.0.40 (100.0.0.40) 56(84) bytes of data.
+
+--- 100.0.0.40 ping statistics ---
+1 packets transmitted, 0 received, 100% packet loss, time 0ms
+
+Failed
+
+
+ICMP Ping tests finished!
+Conclusion: 20ICMP packets sent in total, 9 was success. 
+Success rate is 9/20
+
+
+=======================DNS Test=======================
+Case 1: H1 dig Load Balancer 1 to port 53:
+
+; <<>> DiG 9.9.5-3ubuntu0.2-Ubuntu <<>> -p 53 @100.0.0.25 team3.com
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 34835
+;; flags: qr; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;team3.com.			IN	A
+
+;; ANSWER SECTION:
+team3.com.		0	IN	A	100.0.0.45
+
+;; Query time: 44 msec
+;; SERVER: 100.0.0.25#53(100.0.0.25)
+;; WHEN: Mon May 14 16:44:12 CEST 2018
+;; MSG SIZE  rcvd: 52
+
+Success
+
+Case 2: H1 dig Load Balancer 1 to port 60:
+
+; <<>> DiG 9.9.5-3ubuntu0.2-Ubuntu <<>> -p 60 @100.0.0.25 team3.com
+; (1 server found)
+;; global options: +cmd
+;; connection timed out; no servers could be reached
+Failed
+
+Case 3: H1 dig Load Balancer 1 to port 100:
+
+; <<>> DiG 9.9.5-3ubuntu0.2-Ubuntu <<>> -p 100 @100.0.0.25 team3.com
+; (1 server found)
+;; global options: +cmd
+;; connection timed out; no servers could be reached
+Failed
+
+Case 4: H1 dig DNS Server 1 Actual IP to port 53:
+
+; <<>> DiG 9.9.5-3ubuntu0.2-Ubuntu <<>> -p 53 @100.0.0.20 team3.com
+; (1 server found)
+;; global options: +cmd
+;; connection timed out; no servers could be reached
+Failed
+
+Case 1: H1 dig DNS Server 2 Actual IP to port 53:
+
+; <<>> DiG 9.9.5-3ubuntu0.2-Ubuntu <<>> -p 53 @100.0.0.21 team3.com
+; (1 server found)
+;; global options: +cmd
+;; connection timed out; no servers could be reached
+Failed
+
+Case 6: H1 dig DNS Server 3 Actual IP to port 53:
+
+; <<>> DiG 9.9.5-3ubuntu0.2-Ubuntu <<>> -p 53 @100.0.0.22 team3.com
+; (1 server found)
+;; global options: +cmd
+;; connection timed out; no servers could be reached
+Failed
+
+Case 7: H3 dig Load Balancer 1 to port 53:
+
+; <<>> DiG 9.9.5-3ubuntu0.2-Ubuntu <<>> -p 53 @100.0.0.25 team3.com
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 3923
+;; flags: qr; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;team3.com.			IN	A
+
+;; ANSWER SECTION:
+team3.com.		0	IN	A	100.0.0.45
+
+;; Query time: 72 msec
+;; SERVER: 100.0.0.25#53(100.0.0.25)
+;; WHEN: Mon May 14 16:45:27 CEST 2018
+;; MSG SIZE  rcvd: 52
+
+Success
+
+Case 8: H3 dig Load Balancer 1 to port 60:
+
+; <<>> DiG 9.9.5-3ubuntu0.2-Ubuntu <<>> -p 60 @100.0.0.25 team3.com
+; (1 server found)
+;; global options: +cmd
+;; connection timed out; no servers could be reached
+Failed
+
+Case 9: H3 dig Load Balancer 1 to port 100:
+
+; <<>> DiG 9.9.5-3ubuntu0.2-Ubuntu <<>> -p 100 @100.0.0.25 team3.com
+; (1 server found)
+;; global options: +cmd
+;; connection timed out; no servers could be reached
+Failed
+
+Case 10: H3 dig Load Balancer 1 to port 53:
+
+; <<>> DiG 9.9.5-3ubuntu0.2-Ubuntu <<>> -p 53 @100.0.0.20 team3.com
+; (1 server found)
+;; global options: +cmd
+;; connection timed out; no servers could be reached
+Failed
+
+Case 11: H3 dig DNS Server 2 actual IP to port 53:
+
+; <<>> DiG 9.9.5-3ubuntu0.2-Ubuntu <<>> -p 53 @100.0.0.21 team3.com
+; (1 server found)
+;; global options: +cmd
+;; connection timed out; no servers could be reached
+Failed
+
+Case 12: H3 dig DNS Server 3 actual IP to port 53:
+
+; <<>> DiG 9.9.5-3ubuntu0.2-Ubuntu <<>> -p 53 @100.0.0.22 team3.com
+; (1 server found)
+;; global options: +cmd
+;; connection timed out; no servers could be reached
+Failed
+
+
+DNS Tests finished!
+Conclusion: 12 DNS requests sent. 2 was success
+The success rate is 2/12.
+
+
+====================TCP Test====================
+This part will test the function of IDS and Load Balancer 2.
+Case 1: H1 -> Load Balancer 2 Web Port 80 method POST:
+
+<head>
+<title>Error response</title>
+</head>
+<body>
+<h1>Error response</h1>
+<p>Error code 501.
+<p>Message: Unsupported method ('POST').
+<p>Error code explanation: 501 = Server does not support this operation.
+</body>
+
+Success
+
+Case 2: H1 -> Load Balancer 2 Web Port 80 method PUT:
+<head>
+<title>Error response</title>
+</head>
+<body>
+<h1>Error response</h1>
+<p>Error code 501.
+<p>Message: Unsupported method ('PUT').
+<p>Error code explanation: 501 = Server does not support this operation.
+</body>
+
+
+Success
+
+Case 3: H3 -> Load Balancer 2 Web Port 80 method POST:
+
+<head>
+<title>Error response</title>
+</head>
+<body>
+<h1>Error response</h1>
+<p>Error code 501.
+<p>Message: Unsupported method ('POST').
+<p>Error code explanation: 501 = Server does not support this operation.
+</body>
+
+Success
+
+Case 4: H3 -> Load Balancer 2 Web Port 80 method PUT:
+
+<head>
+<title>Error response</title>
+</head>
+<body>
+<h1>Error response</h1>
+<p>Error code 501.
+<p>Message: Unsupported method ('PUT').
+<p>Error code explanation: 501 = Server does not support this operation.
+</body>
+
+Success
+
+Case 5: H1 -> Load Balancer 2 Web Port 90 method POST:
+curl: (28) Connection timed out after 20001 milliseconds
+
+
+Failed
+
+Case 6: H1 -> Load Balancer 2 Web Port 100 method POST:
+curl: (28) Connection timed out after 20001 milliseconds
+
+
+Failed
+
+Case 7: H1 -> Web Port 80 method POST:
+
+curl: (7) Failed to connect to 100.0.0.40 port 80: No route to host
+
+Failed
+
+Case 8: H1 -> Web Server 2 Actual IP Web Port 80 method POST:
+
+curl: (7) Failed to connect to 100.0.0.41 port 80: No route to host
+
+Failed
+
+Case 9: H1 -> Web Server 3 Actual IP Web Port 80 method POST:
+
+curl: (7) Failed to connect to 100.0.0.42 port 80: No route to host
+
+Failed
+
+Case 10: H1 -> Load Balancer 2 Web Port 80 method GET:
+curl: (28) Operation timed out after 20000 milliseconds with 0 bytes received
+
+
+Failed
+
+Case 11: H1 -> Load Balancer 2 Web Port 80 method HEAD:
+curl: (28) Operation timed out after 20000 milliseconds with 0 bytes received
+
+
+Failed
+
+Case 12: H1 -> Load Balancer 2 Web Port 80 method OPTIONS:
+curl: (28) Operation timed out after 20000 milliseconds with 0 bytes received
+
+
+Failed
+
+Case 13: H1 -> Load Balancer 2 Web Port 80 method TRACE:
+curl: (28) Operation timed out after 20000 milliseconds with 0 bytes received
+
+
+Failed
+
+Case 14: H1 -> Load Balancer 2 Web Port 80 method DELETE:
+curl: (28) Operation timed out after 20001 milliseconds with 0 bytes received
+
+
+Failed
+
+Case 15: H1 -> Load Balancer 2 Web Port 80 method CONNECT:
+curl: (28) Operation timed out after 20000 milliseconds with 0 bytes received
+
+
+Failed
+
+Case 16: H1 -> Load Balancer 2 Web Port 80 method PUT SQL cat /var/log/:
+curl: (28) Operation timed out after 20000 milliseconds with 0 bytes received
+
+
+Failed
+
+Case 17: H1 -> Load Balancer 2 Web Port 80 method PUT SQL cat /etc/passwd:
+curl: (28) Operation timed out after 20000 milliseconds with 0 bytes received
+
+
+Failed
+
+Case 18: H1 -> Load Balancer 2 Web Port 80 method PUT SQL INSERT:
+curl: (28) Operation timed out after 20000 milliseconds with 0 bytes received
+
+
+Failed
+
+Case 19: H1 -> Load Balancer 2 Web Port 80 method PUT SQL UPDATE:
+curl: (28) Operation timed out after 20000 milliseconds with 0 bytes received
+
+
+Failed
+
+Case 20: H1 -> Load Balancer 2 Web Port 80 method PUT SQL DELETE:
+curl: (28) Operation timed out after 20001 milliseconds with 0 bytes received
+
+
+Failed
+
+Case 21: H3 -> Load Balancer 2 Web Port 80 method POST:
+
+curl: (28) Connection timed out after 20001 milliseconds
+
+Failed
+
+Case 22: H1 -> Load Balancer 2 Web Port 100 method POST:
+
+curl: (28) Connection timed out after 20002 milliseconds
+
+Failed
+
+Case 23: H3 -> Web Server Actual IP Web Port 80 method POST:
+
+curl: (28) Connection timed out after 20001 milliseconds
+
+Failed
+
+Case 24: H3 -> Web Server 2 Actual IP Web Port 80 method POST:
+
+curl: (28) Connection timed out after 20001 milliseconds
+
+Failed
+
+Case 25: H3 -> Load Balancer 2 Web Port 80 method POST:
+
+curl: (28) Connection timed out after 20000 milliseconds
+
+Failed
+
+Case 26: H3 -> Load Balancer 2 Web Port 80 method GET:
+
+curl: (28) Operation timed out after 20002 milliseconds with 0 bytes received
+
+Failed
+
+Case 27: H3 -> Load Balancer 2 Web Port 80 method HEAD:
+
+curl: (28) Operation timed out after 20001 milliseconds with 0 bytes received
+
+Failed
+
+Case 28: H3 -> Load Balancer 2 Web Port 80 method OPTIONS:
+
+curl: (28) Operation timed out after 20000 milliseconds with 0 bytes received
+
+Failed
+
+Case 29: H3 -> Load Balancer 2 Web Port 80 method TRACE:
+
+curl: (28) Operation timed out after 20001 milliseconds with 0 bytes received
+
+Failed
+
+Case 30: H3 -> Load Balancer 2 Web Port 80 method DELETE:
+
+curl: (28) Operation timed out after 20002 milliseconds with 0 bytes received
+
+Failed
+
+Case 31: H3 -> Load Balancer 2 Web Port 80 method CONNECT:
+
+curl: (28) Operation timed out after 20002 milliseconds with 0 bytes received
+
+Failed
+
+Case 32: H3 -> Load Balancer 2 Web Port 80 method PUT SQL cat /var/log/:
+
+curl: (28) Operation timed out after 20001 milliseconds with 0 bytes received
+
+Failed
+
+Case 33: H3 -> Load Balancer 2 Web Port 80 method PUT SQL cat /etc/passwd:
+
+curl: (28) Operation timed out after 20001 milliseconds with 0 bytes received
+
+Failed
+
+Case 34: H3 -> Load Balancer 2 Web Port 80 method PUT SQL INSERT:
+
+curl: (28) Operation timed out after 20000 milliseconds with 0 bytes received
+
+Failed
+
+Case 35: H3 -> Load Balancer 2 Web Port 80 method PUT SQL UPDATE:
+
+curl: (28) Operation timed out after 20001 milliseconds with 0 bytes received
+
+Failed
+
+Case 36: H3 -> Load Balancer 2 Web Port 80 method PUT SQL DELETE:
+
+curl: (28) Operation timed out after 20001 milliseconds with 0 bytes received
+
+Failed
+
+
+ HTTP tests finished! 
+ Conclusion: 36 HTTP packets sent. 4 was success
+The success rate is 4/36.
+================Auto tests finished=================

@@ -1,0 +1,8 @@
+If you want to run manually,
+	1. Run POX controller. Go to directory 'application', open the file MyController.py and change the absolute path of the click file on line 34, 38, 42 and 47.  Then type 'make app' in the command line.
+	2. Run Mininet. Open a new terminal and go to directory 'topology' and type 'make topo' in the command line.
+	3. If you want to clean the environment, quit the mininet and pox and type 'make clean'.
+
+If you want to test automatically,
+	1. Run POX controller. Go to directory 'application' and type 'make app' in the command line', open the file MyController.py and change the absolute path of the click file on line 34, 38, 42 and 47.  Then type 'make app' in the command line.
+	2. Run Mininet. Open a new terminal and go to directory 'topology' and type 'make topo' in the command line. The results will be generated automatically, named as 'phase_2_report' and stored in directory 'results'.

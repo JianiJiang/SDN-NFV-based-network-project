@@ -1,0 +1,7 @@
+If you want to run manually,
+	1. Run POX controller. Go to directory 'application' and type 'make app' in the command line.
+	2. Run Mininet. Open a new terminal and go to directory 'topology' and type 'make topo' in the command line.
+
+If you want to test automatically,
+	1. Run POX controller. Go to directory 'application' and type 'make app' in the command line.
+	2. Run Mininet. Open a new terminal and go to directory 'topology' and type 'make topo' in the command line. The results will be generated automatically, named as 'phase_1_report' and stored in directory 'results'.

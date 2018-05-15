@@ -1,0 +1,206 @@
+=================Ping Test===============
+H1 -> H2 :PING 100.0.0.12 (100.0.0.12) 56(84) bytes of data.
+64 bytes from 100.0.0.12: icmp_seq=1 ttl=64 time=11.2 ms
+
+--- 100.0.0.12 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 11.299/11.299/11.299/0.000 ms
+
+H1 -> H2 : Success
+H1 -> H3 :PING 100.0.0.51 (100.0.0.51) 56(84) bytes of data.
+
+--- 100.0.0.51 ping statistics ---
+1 packets transmitted, 0 received, 100% packet loss, time 0ms
+
+
+H1 -> H3 : Failed
+H1 -> DNS Server 1 :PING 100.0.0.20 (100.0.0.20) 56(84) bytes of data.
+
+--- 100.0.0.20 ping statistics ---
+1 packets transmitted, 0 received, 100% packet loss, time 0ms
+
+
+H1 -> DNS Server 1 : Failed
+H1 -> Web Server 1 :PING 100.0.0.40 (100.0.0.40) 56(84) bytes of data.
+
+--- 100.0.0.40 ping statistics ---
+1 packets transmitted, 0 received, 100% packet loss, time 0ms
+
+
+H1 -> Web Server 1 : Failed
+H3 -> H4 :PING 100.0.0.52 (100.0.0.52) 56(84) bytes of data.
+64 bytes from 100.0.0.52: icmp_seq=1 ttl=64 time=26.3 ms
+
+--- 100.0.0.52 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 26.394/26.394/26.394/0.000 ms
+
+H3 -> H4 : Success
+H3 -> H1 :PING 100.0.0.11 (100.0.0.11) 56(84) bytes of data.
+64 bytes from 100.0.0.11: icmp_seq=1 ttl=64 time=18.4 ms
+
+--- 100.0.0.11 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 18.471/18.471/18.471/0.000 ms
+
+H3 -> H1 : Success
+H3 -> DNS Server 1 :PING 100.0.0.20 (100.0.0.20) 56(84) bytes of data.
+
+--- 100.0.0.20 ping statistics ---
+1 packets transmitted, 0 received, 100% packet loss, time 0ms
+
+
+H3 -> DNS Server 1 : Failed
+H3 -> Web Server 1 :PING 100.0.0.40 (100.0.0.40) 56(84) bytes of data.
+
+--- 100.0.0.40 ping statistics ---
+1 packets transmitted, 0 received, 100% packet loss, time 0ms
+
+
+H3 -> Web Server 1 : Failed
+
+8ICMP packets sent, 3 was success.
+
+
+=================DNS Test===============
+h1 dig ds1 to port 53:
+
+; <<>> DiG 9.9.5-3ubuntu0.17-Ubuntu <<>> -p 53 @100.0.0.20 ws1.com
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 289
+;; flags: qr; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;ws1.com.			IN	A
+
+;; ANSWER SECTION:
+ws1.com.		0	IN	A	100.0.0.40
+
+;; Query time: 72 msec
+;; SERVER: 100.0.0.20#53(100.0.0.20)
+;; WHEN: Tue Apr 17 17:18:23 CEST 2018
+;; MSG SIZE  rcvd: 48
+
+
+Success
+h1 dig ds1 to port 60:
+
+; <<>> DiG 9.9.5-3ubuntu0.17-Ubuntu <<>> -p 60 @100.0.0.20 ws1.com
+; (1 server found)
+;; global options: +cmd
+;; connection timed out; no servers could be reached
+
+Failed
+h1 dig ds1 to port 100:
+
+; <<>> DiG 9.9.5-3ubuntu0.17-Ubuntu <<>> -p 100 @100.0.0.20 ws1.com
+; (1 server found)
+;; global options: +cmd
+;; connection timed out; no servers could be reached
+
+Failed
+h3 dig ds2 to port 53:
+
+; <<>> DiG 9.9.5-3ubuntu0.17-Ubuntu <<>> -p 53 @100.0.0.21 ws2.com
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 5377
+;; flags: qr; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;ws2.com.			IN	A
+
+;; ANSWER SECTION:
+ws2.com.		0	IN	A	100.0.0.41
+
+;; Query time: 79 msec
+;; SERVER: 100.0.0.21#53(100.0.0.21)
+;; WHEN: Tue Apr 17 17:18:54 CEST 2018
+;; MSG SIZE  rcvd: 48
+
+
+Success
+h3 dig ds2 to port 60:
+
+; <<>> DiG 9.9.5-3ubuntu0.17-Ubuntu <<>> -p 60 @100.0.0.21 ws2.com
+; (1 server found)
+;; global options: +cmd
+;; connection timed out; no servers could be reached
+
+Failed
+h3 dig ds2 to port 100:
+
+; <<>> DiG 9.9.5-3ubuntu0.17-Ubuntu <<>> -p 100 @100.0.0.21 ws2.com
+; (1 server found)
+;; global options: +cmd
+;; connection timed out; no servers could be reached
+
+Failed
+
+6 DNS requests sent. 2 was success
+
+
+=================TCP Test===============
+H1 -> Web Server1 Port 80:
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><html>
+<title>Directory listing for /</title>
+<body>
+<h2>Directory listing for /</h2>
+<hr>
+<ul>
+<li><a href="ds1.py">ds1.py</a>
+<li><a href="ds2.py">ds2.py</a>
+<li><a href="ds3.py">ds3.py</a>
+<li><a href="makefile">makefile</a>
+<li><a href="phase_1_report">phase_1_report</a>
+<li><a href="test.py">test.py</a>
+<li><a href="testing.py">testing.py</a>
+<li><a href="testing.pyc">testing.pyc</a>
+</ul>
+<hr>
+</body>
+</html>
+
+Success
+H1 -> Web Server1 Port 90:
+curl: (7) Failed to connect to 100.0.0.40 port 90: Connection timed out
+
+Failed
+H1 -> Web Server1 Port 100:
+curl: (7) Failed to connect to 100.0.0.40 port 100: Connection timed out
+
+Failed
+H3 -> Web Server 2 Port 80:
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><html>
+<title>Directory listing for /</title>
+<body>
+<h2>Directory listing for /</h2>
+<hr>
+<ul>
+<li><a href="ds1.py">ds1.py</a>
+<li><a href="ds2.py">ds2.py</a>
+<li><a href="ds3.py">ds3.py</a>
+<li><a href="makefile">makefile</a>
+<li><a href="phase_1_report">phase_1_report</a>
+<li><a href="test.py">test.py</a>
+<li><a href="testing.py">testing.py</a>
+<li><a href="testing.pyc">testing.pyc</a>
+</ul>
+<hr>
+</body>
+</html>
+
+Success
+H3 -> Web Server 2 Port 90:
+curl: (7) Failed to connect to 100.0.0.41 port 90: Connection timed out
+
+Failed
+H3 -> Web Server 2 Port 100:
+curl: (7) Failed to connect to 100.0.0.41 port 100: Connection timed out
+
+Failed
+
+6 TCP packets sent. 2 was success
